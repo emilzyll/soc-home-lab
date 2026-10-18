@@ -1,0 +1,23 @@
+<!-- Minimal lab config. For a production-grade ruleset use a community config
+     (e.g. SwiftOnSecurity/sysmon-config or olafhartong/sysmon-modular). -->
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>sha256</HashAlgorithms>
+  <EventFiltering>
+    <!-- Event 1: log all process creation -->
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="exclude" />
+    </RuleGroup>
+
+    <!-- Event 3: log all network connections -->
+    <RuleGroup name="" groupRelation="or">
+      <NetworkConnect onmatch="exclude" />
+    </RuleGroup>
+
+    <!-- Event 10: access to lsass (credential dumping) -->
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="end with">lsass.exe</TargetImage>
+      </ProcessAccess>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

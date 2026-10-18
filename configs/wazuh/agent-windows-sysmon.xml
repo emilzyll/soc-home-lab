@@ -1,0 +1,6 @@
+<!-- Add inside <ossec_config> in C:\Program Files (x86)\ossec-agent\ossec.conf on Windows agents.
+     Restart afterwards: Restart-Service WazuhSvc -->
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>

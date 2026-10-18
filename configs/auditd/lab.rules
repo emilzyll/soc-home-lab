@@ -1,0 +1,12 @@
+# Copy to /etc/audit/rules.d/lab.rules then run: sudo augenrules --load
+
+# Identity files
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/sudoers -p wa -k sudoers
+
+# SSH configuration
+-w /etc/ssh/sshd_config -p wa -k sshd_config
+
+# Command execution
+-a always,exit -F arch=b64 -S execve -k exec

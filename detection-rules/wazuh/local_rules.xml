@@ -1,0 +1,26 @@
+<!-- Add to /var/ossec/etc/rules/local_rules.xml on the Wazuh manager.
+     Test with: sudo /var/ossec/bin/wazuh-logtest
+     Reload with: sudo systemctl restart wazuh-manager -->
+<group name="local,sysmon,">
+
+  <!-- T1003: OS credential dumping (Mimikatz by original file name) -->
+  <rule id="100100" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.originalFileName" type="pcre2">(?i)mimikatz\.exe</field>
+    <description>Mimikatz execution detected (Sysmon process creation)</description>
+    <mitre>
+      <id>T1003</id>
+    </mitre>
+  </rule>
+
+  <!-- T1059.001: PowerShell with encoded command -->
+  <rule id="100101" level="10">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)powershell.*\s-(enc|encodedcommand)\s</field>
+    <description>PowerShell executed with an encoded command</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+</group>

@@ -12,7 +12,7 @@ A self-hosted Security Operations Center lab built to practice detection enginee
 |---|---|---|---|---|
 | DC01 | Domain Controller (AD DS, DNS) | Windows Server 2022 | 192.168.1.110 | Domain: soclab.local |
 | WAZUH | SIEM (manager, indexer, dashboard) | Ubuntu Server 24.04 LTS | 192.168.1.150 | Central log collection |
-| WS01 | Domain-joined workstation | Windows 10 | 192.168.1.120 | Sysmon + Wazuh agent |
+| WS01 | Domain-joined workstation | Windows 11 | 192.168.1.120 | Sysmon + Wazuh agent |
 | LNX01 | Linux log source | Ubuntu Server 24.04 LTS | 192.168.1.130 | auditd + Wazuh agent |
 | SOAR | Alert automation (Shuffle) | Ubuntu Server 24.04 LTS | 192.168.1.160 | Webhook from Wazuh |
 | KALI | Attacker machine | Kali Linux | 192.168.1.140 | Powered on for exercises only |
